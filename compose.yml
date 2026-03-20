@@ -37,6 +37,7 @@ services:
         ${SERVER_ADMIN_ACCESS_TOKEN:?Must set to secure random string!}
       # Optional configuration:
       # FRONTEND_URL: "https://ryot.your-domain.com" # IP address is fine too
+      DISABLE_TELEMETRY: "true"
 
 # Uncomment if using 'type: "volume"' above:
 # volumes:
