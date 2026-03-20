@@ -3,8 +3,14 @@ services:
     image: "postgres"
     restart: "unless-stopped"
     container_name: "ryot-db"
-    volumes:
-      - "ryot_storage:/var/lib/postgresql"
+    # Uncomment the volume type for your deployment:
+    # volumes:
+    #   - type: "volume"
+    #     source: "ryot_storage"
+    #     target: "/var/lib/postgresql/"
+    #   - type: "bind"
+    #     source: "./ryot/data/"
+    #     target: "/var/lib/postgresql/"
     environment:
       TZ: "${TZ:-Etc/UTC}"
       POSTGRES_PASSWORD: "postgres"
@@ -30,5 +36,6 @@ services:
       # Optional configuration:
       # FRONTEND_URL: "https://ryot.your-domain.com" # IP address is fine too
 
-volumes:
-  ryot_storage:
+# Uncomment if using 'type: "volume"' above:
+# volumes:
+#   ryot_storage:
