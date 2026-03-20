@@ -1,6 +1,6 @@
 services:
   ryot-db:
-    image: "postgres:18-alpine" # at-least version 15 is required
+    image: "postgres"
     restart: "unless-stopped"
     container_name: "ryot-db"
     volumes:
@@ -13,7 +13,7 @@ services:
       # POSTGRES_USER: "postgres"
 
   ryot:
-    image: "ghcr.io/ignisda/ryot:v10"
+    image: "ghcr.io/ignisda/ryot"
     # pull_policy: "always"
     container_name: "ryot"
     restart: "unless-stopped"
@@ -23,7 +23,7 @@ services:
       TZ: "${TZ:-Etc/UTC}"
       DATABASE_URL: "postgres://postgres:postgres@ryot-db:5432/postgres" # REQUIRED
       # Generate a random value securely:
-      #     $ docker run --rm --entrypoint sh "ghcr.io/ignisda/ryot:v10" \
+      #     $ docker run --rm --entrypoint sh "ghcr.io/ignisda/ryot" \
       #     -c 'tr -dc "a-zA-Z0-9" < "/dev/urandom" | head -c "20" ; echo'
       SERVER_ADMIN_ACCESS_TOKEN: >-
         ${SERVER_ADMIN_ACCESS_TOKEN:?Must set to secure random string!}
