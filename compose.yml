@@ -13,7 +13,7 @@ services:
       # POSTGRES_USER: "postgres"
 
   ryot:
-    image: "ignisda/ryot:v10" # or ghcr.io/ignisda/ryot:v10
+    image: "ghcr.io/ignisda/ryot:v10"
     # pull_policy: "always"
     container_name: "ryot"
     restart: "unless-stopped"
