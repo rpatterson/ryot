@@ -57,3 +57,6 @@ dist
 .vscode/settings.json
 templates
 .claude/settings.local.json
+
+# Common backup files suffix:
+*~
