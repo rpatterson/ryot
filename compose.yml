@@ -22,6 +22,8 @@ services:
     image: "ghcr.io/ignisda/ryot"
     # pull_policy: "always"
     container_name: "ryot"
+    depends_on:
+      - "ryot-db"
     restart: "unless-stopped"
     ports:
       - "${LAN_IP:-127.0.0.1}:8000:8000"
