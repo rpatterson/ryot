@@ -22,7 +22,11 @@ services:
     environment:
       TZ: "${TZ:-Etc/UTC}"
       DATABASE_URL: "postgres://postgres:postgres@ryot-db:5432/postgres" # REQUIRED
-      SERVER_ADMIN_ACCESS_TOKEN: "28ebb3ae554fa9867ba0" # REQUIRED: set to a long random string
+      # Generate a random value securely:
+      #     $ docker run --rm --entrypoint sh "ghcr.io/ignisda/ryot:v10" \
+      #     -c 'tr -dc "a-zA-Z0-9" < "/dev/urandom" | head -c "20" ; echo'
+      SERVER_ADMIN_ACCESS_TOKEN: >-
+        ${SERVER_ADMIN_ACCESS_TOKEN:?Must set to secure random string!}
       # Optional configuration:
       # FRONTEND_URL: "https://ryot.your-domain.com" # IP address is fine too
 
