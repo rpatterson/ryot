@@ -26,7 +26,7 @@ services:
       - "ryot-db"
     restart: "unless-stopped"
     ports:
-      - "${LAN_IP:-127.0.0.1}:8000:8000"
+      - "${LAN_IP:-127.0.0.1}:${RYOT_PORT:-8000}:8000"
     environment:
       TZ: "${TZ:-Etc/UTC}"
       DATABASE_URL: "postgres://postgres:postgres@ryot-db:5432/postgres" # REQUIRED
